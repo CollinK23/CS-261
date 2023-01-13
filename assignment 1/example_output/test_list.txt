@@ -1,0 +1,74 @@
+$ ./test_list
+Checking that list is not NULL... OK
+
+Adding students[7] to the list... OK (check for correct positions below)
+Adding students[6] to the list... OK (check for correct positions below)
+Adding students[5] to the list... OK (check for correct positions below)
+Adding students[4] to the list... OK (check for correct positions below)
+Adding students[3] to the list... OK (check for correct positions below)
+Adding students[2] to the list... OK (check for correct positions below)
+Adding students[1] to the list... OK (check for correct positions below)
+Adding students[0] to the list... OK (check for correct positions below)
+
+Position of students[0] (should be 0)... 0
+Position of students[1] (should be 1)... 1
+Position of students[2] (should be 2)... 2
+Position of students[3] (should be 3)... 3
+Position of students[4] (should be 4)... 4
+Position of students[5] (should be 5)... 5
+Position of students[6] (should be 6)... 6
+Position of students[7] (should be 7)... 7
+
+Reversing list... OK (check for correct positions below)
+Position of students[0] (should be 7)... 7
+Position of students[1] (should be 6)... 6
+Position of students[2] (should be 5)... 5
+Position of students[3] (should be 4)... 4
+Position of students[4] (should be 3)... 3
+Position of students[5] (should be 2)... 2
+Position of students[6] (should be 1)... 1
+Position of students[7] (should be 0)... 0
+
+Position of non-existent student (should be -1)... -1
+
+Removing students[7]... OK (check below to make sure removed correctly)
+Position of students[7] (should be -1)... -1
+
+Removing students[3]... OK (check below to make sure removed correctly)
+Position of students[3] (should be -1)... -1
+
+Removing students[1]... OK (check below to make sure removed correctly)
+Position of students[1] (should be -1)... -1
+
+Freeing list... OK (check valgrind output to ensure no memory leaks)
+
+Adding more elements back....
+
+Adding students[0] to the end of the list... OK (check for correct positions below)
+Adding students[1] to the end of the list... OK (check for correct positions below)
+Adding students[2] to the end of the list... OK (check for correct positions below)
+Adding students[3] to the end of the list... OK (check for correct positions below)
+Adding students[4] to the end of the list... OK (check for correct positions below)
+Adding students[5] to the end of the list... OK (check for correct positions below)
+Adding students[6] to the end of the list... OK (check for correct positions below)
+Adding students[7] to the end of the list... OK (check for correct positions below)
+
+Position of students[0] (should be 0)... 0
+Position of students[1] (should be 1)... 1
+Position of students[2] (should be 2)... 2
+Position of students[3] (should be 3)... 3
+Position of students[4] (should be 4)... 4
+Position of students[5] (should be 5)... 5
+Position of students[6] (should be 6)... 6
+Position of students[7] (should be 7)... 7
+
+Removing students[7]... OK (check below to make sure removed correctly)
+Position of students[7] (should be -1)... -1
+
+Removing students[6]... OK (check below to make sure removed correctly)
+Position of students[6] (should be -1)... -1
+
+Removing students[5]... OK (check below to make sure removed correctly)
+Position of students[5] (should be -1)... -1
+
+Freeing list again... OK (check valgrind output to ensure no memory leaks)

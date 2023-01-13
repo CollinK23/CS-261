@@ -1,0 +1,49 @@
+$ ./test_dynarray
+Checking that array is not NULL... OK
+
+Adding students[0] to the array... OK (check for correct array contents below)
+Adding students[1] to the array... OK (check for correct array contents below)
+Adding students[2] to the array... OK (check for correct array contents below)
+Adding students[3] to the array... OK (check for correct array contents below)
+Adding students[4] to the array... OK (check for correct array contents below)
+Adding students[5] to the array... OK (check for correct array contents below)
+Adding students[6] to the array... OK (check for correct array contents below)
+Adding students[7] to the array... OK (check for correct array contents below)
+
+Checking array size (8 == 8?)... OK
+
+Array contents:
+  Luke Skywalker  	933111111	3.750000
+  Leia Organa     	933222222	4.000000
+  Rey             	933333333	3.900000
+  Han Solo        	933444444	2.500000
+  Lando Calrissian	933555555	3.670000
+  Darth Vader     	933666666	1.330000
+  Finn            	933777777	3.250000
+  R2-D2           	933888888	3.900000
+
+Replacing element 7... OK (check that values below match)
+Inserted:  Kylo Ren        	933999999	0.750000
+Array @ 7: Kylo Ren        	933999999	0.750000
+
+Replacing element 3... OK (check that values below match)
+Inserted:  Kylo Ren        	933999999	0.750000
+Array @ 3: Kylo Ren        	933999999	0.750000
+
+Replacing element 1... OK (check that values below match)
+Inserted:  Kylo Ren        	933999999	0.750000
+Array @ 1: Kylo Ren        	933999999	0.750000
+
+Removing element 7... OK (check updated array contents below)
+Removing element 3... OK (check updated array contents below)
+Removing element 1... OK (check updated array contents below)
+
+New array size (should be 5): 5
+New array contents (should have no Kylo Ren):
+  Luke Skywalker  	933111111	3.750000
+  Rey             	933333333	3.900000
+  Lando Calrissian	933555555	3.670000
+  Darth Vader     	933666666	1.330000
+  Finn            	933777777	3.250000
+
+Freeing array... OK (check valgrind output to ensure no memory leaks)

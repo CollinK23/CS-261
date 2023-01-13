@@ -1,0 +1,169 @@
+$ ./test_db_list
+Checking that doubly-linked list is not NULL... OK
+
+Adding students[7] to the beginning of the doubly-linked list... OK (check for display below)
+Adding students[6] to the beginning of the doubly-linked list... OK (check for display below)
+Adding students[5] to the beginning of the doubly-linked list... OK (check for display below)
+Adding students[4] to the beginning of the doubly-linked list... OK (check for display below)
+Adding students[3] to the beginning of the doubly-linked list... OK (check for display below)
+Adding students[2] to the beginning of the doubly-linked list... OK (check for display below)
+Adding students[1] to the beginning of the doubly-linked list... OK (check for display below)
+Adding students[0] to the beginning of the doubly-linked list... OK (check for display below)
+
+Display the doubly-linked list forward...
+Expected:
+Name: Luke Skywalker
+ID: 933111111    GPA: 3.750000
+Name: Leia Organa
+ID: 933222222    GPA: 4.000000
+Name: Rey
+ID: 933333333    GPA: 3.900000
+Name: Han Solo
+ID: 933444444    GPA: 2.500000
+Name: Lando Calrissian
+ID: 933555555    GPA: 3.670000
+Name: Darth Vader
+ID: 933666666    GPA: 1.330000
+Name: Finn
+ID: 933777777    GPA: 3.250000
+Name: R2-D2
+ID: 933888888    GPA: 3.900000
+
+Actual:
+Name: Luke Skywalker
+ID: 933111111    GPA: 3.750000
+Name: Leia Organa
+ID: 933222222    GPA: 4.000000
+Name: Rey
+ID: 933333333    GPA: 3.900000
+Name: Han Solo
+ID: 933444444    GPA: 2.500000
+Name: Lando Calrissian
+ID: 933555555    GPA: 3.670000
+Name: Darth Vader
+ID: 933666666    GPA: 1.330000
+Name: Finn
+ID: 933777777    GPA: 3.250000
+Name: R2-D2
+ID: 933888888    GPA: 3.900000
+
+Display the doubly-linked list backward...
+Expected:
+Name: R2-D2
+ID: 933888888    GPA: 3.900000
+Name: Finn
+ID: 933777777    GPA: 3.250000
+Name: Darth Vader
+ID: 933666666    GPA: 1.330000
+Name: Lando Calrissian
+ID: 933555555    GPA: 3.670000
+Name: Han Solo
+ID: 933444444    GPA: 2.500000
+Name: Rey
+ID: 933333333    GPA: 3.900000
+Name: Leia Organa
+ID: 933222222    GPA: 4.000000
+Name: Luke Skywalker
+ID: 933111111    GPA: 3.750000
+
+Actual:
+Name: R2-D2
+ID: 933888888    GPA: 3.900000
+Name: Finn
+ID: 933777777    GPA: 3.250000
+Name: Darth Vader
+ID: 933666666    GPA: 1.330000
+Name: Lando Calrissian
+ID: 933555555    GPA: 3.670000
+Name: Han Solo
+ID: 933444444    GPA: 2.500000
+Name: Rey
+ID: 933333333    GPA: 3.900000
+Name: Leia Organa
+ID: 933222222    GPA: 4.000000
+Name: Luke Skywalker
+ID: 933111111    GPA: 3.750000
+
+Freeing doubly-linked list... OK (check valgrind output to ensure no memory leaks)
+
+Adding more elements back....
+
+Adding students[0] to the end of the doubly-linked list... OK (check for correct positions below)
+Adding students[1] to the end of the doubly-linked list... OK (check for correct positions below)
+Adding students[2] to the end of the doubly-linked list... OK (check for correct positions below)
+Adding students[3] to the end of the doubly-linked list... OK (check for correct positions below)
+Adding students[4] to the end of the doubly-linked list... OK (check for correct positions below)
+Adding students[5] to the end of the doubly-linked list... OK (check for correct positions below)
+Adding students[6] to the end of the doubly-linked list... OK (check for correct positions below)
+Adding students[7] to the end of the doubly-linked list... OK (check for correct positions below)
+
+Display the doubly-linked list forward...
+Expected:
+Name: Luke Skywalker
+ID: 933111111    GPA: 3.750000
+Name: Leia Organa
+ID: 933222222    GPA: 4.000000
+Name: Rey
+ID: 933333333    GPA: 3.900000
+Name: Han Solo
+ID: 933444444    GPA: 2.500000
+Name: Lando Calrissian
+ID: 933555555    GPA: 3.670000
+Name: Darth Vader
+ID: 933666666    GPA: 1.330000
+Name: Finn
+ID: 933777777    GPA: 3.250000
+Name: R2-D2
+ID: 933888888    GPA: 3.900000
+
+Actual:
+Name: Luke Skywalker
+ID: 933111111    GPA: 3.750000
+Name: Leia Organa
+ID: 933222222    GPA: 4.000000
+Name: Rey
+ID: 933333333    GPA: 3.900000
+Name: Han Solo
+ID: 933444444    GPA: 2.500000
+Name: Lando Calrissian
+ID: 933555555    GPA: 3.670000
+Name: Darth Vader
+ID: 933666666    GPA: 1.330000
+Name: Finn
+ID: 933777777    GPA: 3.250000
+Name: R2-D2
+ID: 933888888    GPA: 3.900000
+
+Removing students[7]... OK (check below to make sure removed correctly)
+
+Removing students[6]... OK (check below to make sure removed correctly)
+
+Removing students[5]... OK (check below to make sure removed correctly)
+
+Display the doubly-linked list backward...
+Expected:
+Name: Lando Calrissian
+ID: 933555555    GPA: 3.670000
+Name: Han Solo
+ID: 933444444    GPA: 2.500000
+Name: Rey
+ID: 933333333    GPA: 3.900000
+Name: Leia Organa
+ID: 933222222    GPA: 4.000000
+Name: Luke Skywalker
+ID: 933111111    GPA: 3.750000
+
+Actual:
+Name: Lando Calrissian
+ID: 933555555    GPA: 3.670000
+Name: Han Solo
+ID: 933444444    GPA: 2.500000
+Name: Rey
+ID: 933333333    GPA: 3.900000
+Name: Leia Organa
+ID: 933222222    GPA: 4.000000
+Name: Luke Skywalker
+ID: 933111111    GPA: 3.750000
+
+Freeing doubly-linked list again... OK (check valgrind output to ensure no memory leaks)
+
