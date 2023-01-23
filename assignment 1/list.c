@@ -42,8 +42,11 @@ struct list* list_create()
     /*
      * FIXED ME: 
      */
+
+    struct list* newList = malloc(sizeof(struct list)); //Allocates memory to the list struct
+    newList->head = NULL; //Creates empty list
     
-    return NULL;
+    return newList;
 }
 
 /*
@@ -63,6 +66,17 @@ void list_free(struct list* list)
     /*
      * FIXED ME: 
      */
+
+    struct node* curr = list->head;
+    struct node* temp = NULL; //Temp value to access next value in list, when current node is freed
+
+    while(curr){
+        temp = curr->next;
+        free(curr); //Frees Node
+        curr = temp; //Access next node
+    }
+
+    free(list); //Frees struct
     return;
 }
 
@@ -85,6 +99,11 @@ void list_insert(struct list* list, void* val)
     /*
      * FIXED ME: 
      */
+    struct node* newNode = malloc(sizeof(struct node)); //Allocates moemory to new node
+
+    newNode->val = val; //Sets value of node
+    newNode->next = list->head; //Sets pointer of new node to the current head
+    list->head = newNode; //Sets the new node as the head
     return;
 }
 
@@ -106,7 +125,29 @@ void list_insert_end(struct list* list, void* val)
 {
     /*
      * FIXED ME: 
-     */
+    */
+
+    // Checks if the list is empty
+    if(list->head){
+        struct node* curr = list->head;
+        struct node* newNode = malloc(sizeof(struct node)); //Allocates memory to new node
+        newNode->val = val; //Sets value of node
+        newNode->next = NULL; //End of list pointer
+
+        //Iterates to end of list
+        while(curr->next){
+            curr = curr->next;
+        }
+
+        curr->next = newNode; //Adds node to end of list
+    }
+    else{
+        //Inserts at start of list
+        struct node* newNode = malloc(sizeof(struct node));
+        newNode->val = val;
+        newNode->next = NULL;
+        list->head = newNode;
+    }
     return;
 }
 
@@ -154,6 +195,29 @@ void list_remove(struct list* list, void* val, int (*cmp)(void* a, void* b))
     /*
      * FIXED ME: 
      */
+
+    //Checks if list exists
+    if(list){
+        struct node* curr = list->head;
+        struct node* prev = NULL; //Gives access to node before the one being removed
+
+        //Iterates through list until node value matches
+        while(curr) {
+            if (cmp(val, curr->val) == 0) {
+                if (prev) {
+                    //Can Remove all nodes besides head node
+                    prev->next = curr->next; //Changes pointer of previous node
+                } else {
+                    //Removes head node
+                    list->head = curr->next; //Changes head to second node in list
+                }
+                free(curr);
+                break;
+            }
+            prev = curr; //Updates previous value
+            curr = curr->next; //Updates current value
+        }
+    }
     return;
 }
 
@@ -168,11 +232,23 @@ void list_remove(struct list* list, void* val, int (*cmp)(void* a, void* b))
  * list - the linked list from which to remove an element.  May not be NULL.
 
  */
-void list_remove_end(struct list* list)
-{
-	/*
-     * FIXED ME: 
-     */
+void list_remove_end(struct list* list){   
+    //Checks if list exists
+    if(list){
+        struct node* curr = list->head;
+        
+        //Iterates to node before the last node
+        while(curr->next->next){
+            curr = curr->next;
+        }
+
+        free(curr->next); //Frees memory allocated to last node
+        curr->next = NULL; //Sets next pointer to null
+
+        /*
+        * FIXED ME: 
+        */
+    }
     return;
 }
 
@@ -221,11 +297,29 @@ void list_remove_end(struct list* list)
  *    such instance to the head of the list) or -1 if `list` does not contain
  *    the value `val`.
  */
-int list_position(struct list* list, void* val, int (*cmp)(void* a, void* b))
-{
+int list_position(struct list* list, void* val, int (*cmp)(void* a, void* b)){
+
     /*
-     * FIXED ME: 
-     */
+    * FIXED ME: 
+    */
+    if(list){
+        int i = 0; //Stores position in list
+        struct node* curr = list->head;
+
+        //Iterates until it finds value
+        while(curr->next){
+            if (cmp(val, curr->val) == 0) {
+                return i;
+            }
+            curr = curr->next;
+            i++; //Posiiton changes
+        }
+
+        //Checks last node in list
+        if (cmp(val, curr->val) == 0) {
+            return i;
+        }
+    }
     return -1;
 }
 
@@ -244,5 +338,19 @@ void list_reverse(struct list* list)
     /*
      * FIXED ME: 
      */
+
+    struct node* curr = list->head;
+    struct node* prev = NULL;
+    struct node* temp = curr;
+
+    while(curr){
+        temp = curr->next; //Stores next node before pointer is changed
+        curr->next = prev; //Points to previous node in list
+        prev = curr; //Updates previous node to current node
+        curr = temp; //Updates current node to next node stored by temp
+    }
+
+    list->head = prev; //Updates the head of list
+
     return;
 }

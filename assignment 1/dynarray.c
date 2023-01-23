@@ -5,8 +5,8 @@
  * functions you might need.  Also, don't forget to include your name and
  * @oregonstate.edu email address below.
  *
- * Name:
- * Email:
+ * Name: Collin Kimball
+ * Email: kimbacol@oregonstate.edu
  */
 
 #include <stdio.h>
@@ -42,8 +42,8 @@ struct dynarray* dynarray_create()
     /*
      * FIXED ME: 
      */
-    struct dynarray* newArray = malloc(sizeof(struct dynarray));
-    newArray->data = malloc(2 * sizeof(void**));
+    struct dynarray* newArray = malloc(sizeof(struct dynarray)); //Allocates space for new array struct
+    newArray->data = malloc(2 * sizeof(void**)); //Sets capacity of array to 2
     newArray->size = 0;
     newArray->capacity = 2;
 
@@ -66,8 +66,8 @@ void dynarray_free(struct dynarray* da)
     /*
      * FIXED ME: 
      */
-    free(da->data);
-    free(da);
+    free(da->data); //Frees memory allocated to data array
+    free(da); //Frees memory allocated to dynamic array struct
     da = NULL;
     
     return;
@@ -104,11 +104,13 @@ void dynarray_insert(struct dynarray* da, void* val)
      * FIXED ME: 
      */
 
+    //Doubles capacity of the array if size is equal to capacity
     if (da->size == da->capacity){
         da->capacity *= 2;
+        //Reallocates memory to the data array with the new capacity
         da->data = realloc(da->data, da->capacity * sizeof(void*));
     }
-    da->data[da->size] = val;
+    da->data[da->size] = val; //Inserts value at specified index
     da->size += 1;
     return;
 }
@@ -133,8 +135,9 @@ void dynarray_remove(struct dynarray* da, int idx)
     /*
      * FIXED ME: 
      */
-    
+    //Checks if the dynamic array exists
     if (da->size > 0 && idx < da->size){
+        //For loop swaps values until the data that was removed is at the end of array
         for (int i = idx; i < da->size-1; i++){
             da->data[i] = da->data[i+1];
         }
@@ -159,7 +162,12 @@ void* dynarray_get(struct dynarray* da, int idx)
     /*
      * FIXED ME: 
      */
-    return da->data[idx];
+
+    //Check if index is within range
+    if(idx < da->size){
+        return da->data[idx];
+    }
+
 }
 
 /*

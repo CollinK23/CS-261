@@ -48,7 +48,12 @@ struct db_list* db_list_create()
     /*
      * FIXED ME: 
      */
-    return NULL;
+
+    struct db_list* newList = malloc(sizeof(struct db_list)); //Allocates moemory to new list
+    newList->head = NULL;
+    newList->tail = NULL;
+
+    return newList;
 }
 
 /*
@@ -67,6 +72,16 @@ void db_list_free(struct db_list* db_list)
     /*
      * FIXED ME: 
      */
+    struct db_node* curr = db_list->head;
+    struct db_node* temp = NULL;
+
+    while(curr){
+        temp = curr->next; //Stores next value in list before current node is freed
+        free(curr); //Frees current node
+        curr = temp; //Changes current node to next node in list
+    }
+
+    free(db_list); //Frees db_list struct
     return;
 }
 
@@ -88,6 +103,21 @@ void db_list_insert(struct db_list* db_list, void* val)
     /*
      * FIXED ME: 
      */
+
+    struct db_node* newNode = malloc(sizeof(struct db_node)); //Allocates memory for new node
+    newNode->val = val; //Sets value
+    newNode->prev = NULL;
+
+    //Checks if list is empty
+    if(db_list->head){
+        db_list->head->prev = newNode; //Sets prev pointer of the old head to the new head
+    }else{
+        db_list->tail = newNode; //Sets tail and head to the new node
+    }
+
+    //Updates head of list
+    newNode->next = db_list->head;
+    db_list->head = newNode;
     return;
 }
 
@@ -110,6 +140,20 @@ void db_list_insert_end(struct db_list* db_list, void* val)
     /*
      * FIXED ME: 
      */
+    struct db_node* newNode = malloc(sizeof(struct db_node)); //Allocates memory for new node
+    newNode->val = val; //Sets value of node
+    newNode->next = NULL;
+
+    //Checks if list is empty
+    if (db_list->tail){
+        db_list->tail->next = newNode; //Sets next pointer of the old tail to the new tail
+    }else{
+        db_list->head = newNode; //Sets new node as head and tail
+    }
+
+    //Updates tail of the list
+    newNode->prev = db_list->tail;
+    db_list->tail = newNode;
     return;
 }
 
@@ -131,6 +175,17 @@ void db_list_remove_end(struct db_list* db_list)
 	/*
      * FIXED ME: 
      */
+
+    //Checks if list exists
+    if(db_list){
+        struct db_node* curr = db_list->tail;
+        struct db_node* temp = db_list->tail->prev;
+        //Removes tail and updates the previous value to be the new tail
+        db_list->tail = curr->prev;
+        db_list->tail->next = NULL;
+        free(curr); //Frees the old tail
+    }
+
     return;
 }
 
@@ -157,6 +212,14 @@ void db_list_display_forward(struct db_list* db_list, void (*p)(void* a))
 	/*
      * FIXED ME: 
      */
+
+    struct db_node* curr = db_list->head;
+
+    //Iterates through the entire list using next pointer
+    while(curr){
+        p(curr->val);
+        curr = curr->next;
+    }
 	return;
 }
 
@@ -182,6 +245,15 @@ void db_list_display_backward(struct db_list* db_list, void (*p)(void* a))
 	/*
      * FIXED ME: 
      */
+    struct db_node* curr = db_list->tail;
+
+
+    //Iterates through the entire list using the previous pointer
+    while(curr){
+        p(curr->val);
+        curr = curr->prev;
+    }
+
 	return;
 }
 
