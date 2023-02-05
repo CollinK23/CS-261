@@ -1,0 +1,27 @@
+$ ./test_queue
+== Enqueueing first 8 of 16 values.
+
+== Dequeueing some values: front / dequeued (expected)
+  -    0 /    0 (   0)
+  -    1 /    1 (   1)
+  -    4 /    4 (   4)
+  -    9 /    9 (   9)
+
+== Enqueueing remaining 8 of 16 values.
+
+== Dequeueing remaining values: front / dequeued (expected)
+  -   16 /   16 (  16)
+  -   25 /   25 (  25)
+  -   36 /   36 (  36)
+  -   49 /   49 (  49)
+  -   64 /   64 (  64)
+  -   81 /   81 (  81)
+  -  100 /  100 ( 100)
+  -  121 /  121 ( 121)
+  -  144 /  144 ( 144)
+  -  169 /  169 ( 169)
+  -  196 /  196 ( 196)
+  -  225 /  225 ( 225)
+
+== Is queue empty (expect 1)? 1
+== Saw all test data (expect 1)? 1

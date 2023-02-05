@@ -1,0 +1,27 @@
+$ ./test_stack
+== Pushing first 8 of 16 values onto stack.
+
+== Popping some from stack: top / popped (expected)
+  -   49 /   49 (  49)
+  -   36 /   36 (  36)
+  -   25 /   25 (  25)
+  -   16 /   16 (  16)
+
+== Pushing remaining 8 of 16 values onto stack.
+
+== Popping rest from stack: top / popped (expected)
+  -  225 /  225 ( 225)
+  -  196 /  196 ( 196)
+  -  169 /  169 ( 169)
+  -  144 /  144 ( 144)
+  -  121 /  121 ( 121)
+  -  100 /  100 ( 100)
+  -   81 /   81 (  81)
+  -   64 /   64 (  64)
+  -    9 /    9 (   9)
+  -    4 /    4 (   4)
+  -    1 /    1 (   1)
+  -    0 /    0 (   0)
+
+== Is stack empty (expect 1)? 1
+== Saw all test data (expect 1)? 1
