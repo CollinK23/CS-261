@@ -46,10 +46,10 @@ void receiveCall(struct queue* queue,int callerNum){
 	char newName[100]; 
 	char newReason[100];
 
-	printf("Enter Caller's Name: ");
+	printf("Enter Caller's Name(No Spaces): ");
 	scanf("%s", newName); //Take in user input
 	printf("\n");
-	printf("Enter Call Reason: ");
+	printf("Enter Call Reason(No Spaces): ");
 	scanf("%s", newReason); //Take in user input
 
 	struct caller* newCaller = malloc(sizeof(struct caller)); //Allocates memory for new caller struct

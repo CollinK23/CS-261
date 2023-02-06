@@ -16,6 +16,8 @@ struct dynarray {
   void** data;
   int size;
   int capacity;
+  int start; //Circular queue implementation
+  int end; //Circular queue impelementation
 };
 
 #define DYNARRAY_INIT_CAPACITY 4
@@ -32,6 +34,8 @@ struct dynarray* dynarray_create() {
   assert(da->data);
   da->size = 0;
   da->capacity = DYNARRAY_INIT_CAPACITY;
+  da->start = 0;
+  da->end = 0;
 
   return da;
 }
@@ -56,7 +60,7 @@ void dynarray_free(struct dynarray* da) {
  */
 int dynarray_size(struct dynarray* da) {
   assert(da);
-  return da->size;
+  return da->end; //Returns the size of the logical array
 }
 
 
@@ -112,6 +116,7 @@ void dynarray_insert(struct dynarray* da, void* val) {
    */
   da->data[da->size] = val;
   da->size++;
+  da->end++;
 }
 
 /*
@@ -173,4 +178,28 @@ void dynarray_set(struct dynarray* da, int idx, void* val) {
   assert(idx < da->size && idx >= 0);
 
   da->data[idx] = val;
+}
+
+/*
+ * This function removes the first element from the dynamic array
+ * Updates the start position of the array instead of moving first element to back of array
+ *  returns the element that was removed
+ * Params:
+ *   da - the dynamic array from which to remove an element.  May not be NULL.
+ */
+void* dynarray_remove_head(struct dynarray* da){
+  void** val = da->data[da->start]; //saves value being removed
+  da->start = (da->start + 1) % da->size; //Updates starting position of the array
+  da->end--; //Updates size of logical array
+  return val;
+}
+
+/*
+ * This function returns the first element in the array
+ *
+ * Params:
+ *   da - the dynamic array from which to get a value.  May not be NULL.
+ */
+void* dynarray_get_head(struct dynarray* da){
+  return da->data[da->start]; //Returns first logical index
 }

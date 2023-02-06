@@ -25,5 +25,7 @@ void dynarray_insert(struct dynarray* da, void* val);
 void dynarray_remove(struct dynarray* da, int idx);
 void* dynarray_get(struct dynarray* da, int idx);
 void dynarray_set(struct dynarray* da, int idx, void* val);
+void* dynarray_remove_head(struct dynarray* da);
+void* dynarray_get_head(struct dynarray* da);
 
 #endif

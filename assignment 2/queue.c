@@ -104,7 +104,7 @@ void* queue_front(struct queue* queue) {
 	/* 
 	 * FIXME:
 	 */
-	return dynarray_get(queue->array, 0); //Gets the first element in the queue
+	return dynarray_get_head(queue->array); //Gets the first element in the queue
 }
 
 /*
@@ -121,9 +121,7 @@ void* queue_dequeue(struct queue* queue) {
 	/* 
 	 * FIXME:
 	 */
-	void* val = dynarray_get(queue->array, 0); //copies the first element in the queue
-	dynarray_remove(queue->array, 0); //Removes the first element in the queue
-	return val;
+	return dynarray_remove_head(queue->array); //Removes first element in o(1) time complexity using circular array
 }
 
 /*
