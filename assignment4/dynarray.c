@@ -177,12 +177,26 @@ void dynarray_set(struct dynarray* da, int idx, void* val) {
   da->data[idx] = val;
 }
 
+/*
+ * This function swaps values in the dynamic array
+ *
+ * Params:
+ *   da - the dynamic array in which to set a value.  May not be NULL.
+ *   idx1 - the first index that will be swapped in the array
+ *   idx2 - the second index that will be swapped in the array
+ */
 void dynarray_swap(struct dynarray* da, int idx1, int idx2){
   void* temp = da->data[idx1];
   da->data[idx1] = da->data[idx2];
   da->data[idx2] = temp;
 }
 
+/*
+ * This function updates the size of the array
+ *
+ * Params:
+ *   da - the dynamic array in which to set a value.  May not be NULL.
+ */
 void dynarray_remove_tail(struct dynarray* da){
   da->size -= 1;
 }

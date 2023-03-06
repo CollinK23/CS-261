@@ -188,36 +188,37 @@ void* pq_remove_first(struct pq* pq) {
 	/*
 	 * FIXME: 
 	 */
-	struct pq_node* temp = dynarray_get(pq->dynarray, 0);
+	struct pq_node* temp = dynarray_get(pq->dynarray, 0); //Stores value being removed
 
-	dynarray_swap(pq->dynarray, 0, dynarray_size(pq->dynarray) - 1);
-	dynarray_remove_tail(pq->dynarray);
-	int size = dynarray_size(pq->dynarray);
+	dynarray_swap(pq->dynarray, 0, dynarray_size(pq->dynarray) - 1); //Swaps node being removed with last node in pq
+	dynarray_remove_tail(pq->dynarray); //Removes last node
+	int size = dynarray_size(pq->dynarray); //Resizes the dynamic array
 
 	int curr = 0;
-	int min = curr;
+	int min = curr; //min is node that the current node will be swapped with
+	//Sorts the new root into correct position
 	while(curr < size){
-		int left = 2 * curr + 1;
-		int right = 2 * curr + 2;
+		int left = 2 * curr + 1; // left child of parent node index
+		int right = 2 * curr + 2; //Right child of parent node index
 		if (left < size && 
 		((struct pq_node*)dynarray_get(pq->dynarray, left))->priority < 
 		((struct pq_node*)dynarray_get(pq->dynarray, min))->priority){
-			min = left;
+			min = left; //Sets min equal to left child if it has higher priority than current node
 		}
 		if (right < size && 
 		((struct pq_node*)dynarray_get(pq->dynarray, right))->priority < 
 		((struct pq_node*)dynarray_get(pq->dynarray, min))->priority){
-			min = right;
+			min = right; //Sets min equal to right child if it has higher priority than left child or current node
 		}
 		if (min != curr){
-			dynarray_swap(pq->dynarray, min, curr);
-			curr = min;
+			dynarray_swap(pq->dynarray, min, curr); //Swaps current node with child node
+			curr = min; //Updates current node
 		}else{
-			break;
+			break; //If no swaps need to be done, the node is in correct position
 		}
 	}
 
 	void* value = temp->value;
-	free(temp);
+	free(temp); //Frees memory allocated to the pq node
 	return value;
 }
