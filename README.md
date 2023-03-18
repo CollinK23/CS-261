@@ -18,4 +18,4 @@
 
 ### Assignment 5
 
-- Hash implementation
+- Hash table implementation
